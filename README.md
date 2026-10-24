@@ -22,7 +22,16 @@ A Markdown-first study repository for preparing for the GitHub Copilot architect
 
 Study materials should be Markdown files with the `.md` extension. Keep source links alongside notes so information can be checked for accuracy and currency.
 
-Pull requests are checked automatically. The check fails if the proposed repository contains a tracked file that does not end in `.md`, except for `.github/workflows/markdown-only.yml`, which is the GitHub Actions workflow that runs the check. The default branch is protected so changes must go through a pull request and pass the check before they can be merged.
+Pull requests are checked automatically. The Markdown-only check fails if the proposed repository contains a tracked file that does not end in `.md`, except for `.github/workflows/markdown-only.yml`. The default branch is protected so changes must go through a pull request and required checks must pass before they can be merged.
+
+## Using GitHub Copilot
+
+- To ask Copilot to work on an issue, assign the issue to **Copilot**. Copilot uses the issue content and comments available when assigned; add later guidance on the pull request it opens.
+- To ask Copilot to update an existing pull request, mention `@copilot` in a regular pull request comment.
+- An active branch ruleset automatically requests Copilot code review when a pull request targets the default branch. Reviews of drafts and new pushes are not enabled. Copilot code review usage may consume AI credits and GitHub Actions minutes; see [GitHub's code review setup guide](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review).
+- Copilot availability depends on your Copilot plan and, for organization accounts, administrator policies.
+
+Repository-specific guidance for Copilot is in [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
 
 ## Disclaimer
 
