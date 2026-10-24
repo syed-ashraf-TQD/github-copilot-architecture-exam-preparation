@@ -22,7 +22,11 @@ A Markdown-first study repository for preparing for the GitHub Copilot architect
 
 Study materials should be Markdown files with the `.md` extension. Keep source links alongside notes so information can be checked for accuracy and currency.
 
-Pull requests are checked automatically. The check fails if the proposed repository contains a tracked file that does not end in `.md`, except for `.github/workflows/markdown-only.yml`, which is the GitHub Actions workflow that runs the check. The default branch is protected so changes must go through a pull request and pass the check before they can be merged.
+Pull requests are checked automatically. The Markdown-only check fails if the proposed repository contains a tracked file that does not end in `.md`, except for `.github/workflows/markdown-only.yml` and `.github/workflows/copilot.yml`. The default branch is protected so changes must go through a pull request and required checks must pass before they can be merged.
+
+The Copilot CLI workflow runs a headless review on pull requests and can also be started manually from the Actions tab. It skips pull requests from forks because repository secrets are not available to those runs. To enable it, add a repository secret named `COPILOT_GITHUB_TOKEN` containing a fine-grained personal access token with the **Copilot Requests** permission. The workflow passes it to the CLI as `GH_TOKEN`, which is the documented authentication environment variable. The CLI is denied shell and file-write tools; this check reports a summary but does not automatically validate factual accuracy.
+
+See the [GitHub Copilot CLI documentation](https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli) for details about programmatic use and authentication.
 
 ## Disclaimer
 
