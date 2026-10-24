@@ -20,7 +20,9 @@ A Markdown-first study repository for preparing for the GitHub Copilot architect
 
 ## Repository format
 
-Study materials will be Markdown files. Add a topic file or folder as the notes grow; keep source links alongside notes so information can be checked for accuracy and currency.
+Study materials should be Markdown files with the `.md` extension. Keep source links alongside notes so information can be checked for accuracy and currency.
+
+Pull requests are checked automatically. The check fails if the proposed repository contains a tracked file that does not end in `.md`, except for `.github/workflows/markdown-only.yml`, which is the GitHub Actions workflow that runs the check. The default branch is protected so changes must go through a pull request and pass the check before they can be merged.
 
 ## Disclaimer
 

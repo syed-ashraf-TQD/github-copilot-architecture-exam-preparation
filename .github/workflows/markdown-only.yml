@@ -1,0 +1,41 @@
+name: Markdown-only repository
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-only:
+    name: markdown-only
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Reject non-Markdown files
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          import sys
+
+          allowed_workflow = ".github/workflows/markdown-only.yml"
+          files = subprocess.check_output(
+              ["git", "ls-files", "-z"], text=False
+          ).decode("utf-8", errors="surrogateescape").split("\0")
+          invalid = [
+              path for path in files
+              if path and not path.endswith(".md") and path != allowed_workflow
+          ]
+
+          if invalid:
+              print("These tracked files are not Markdown:")
+              for path in invalid:
+                  print(f"  {path}")
+              sys.exit(1)
+
+          print("All tracked files are Markdown (workflow exception allowed).")
+          PY
