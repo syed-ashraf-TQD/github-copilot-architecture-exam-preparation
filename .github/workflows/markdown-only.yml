@@ -22,16 +22,13 @@ jobs:
           import subprocess
           import sys
 
-          allowed_workflows = {
-              ".github/workflows/markdown-only.yml",
-              ".github/workflows/copilot.yml",
-          }
+          allowed_workflow = ".github/workflows/markdown-only.yml"
           files = subprocess.check_output(
               ["git", "ls-files", "-z"], text=False
           ).decode("utf-8", errors="surrogateescape").split("\0")
           invalid = [
               path for path in files
-              if path and not path.endswith(".md") and path not in allowed_workflows
+              if path and not path.endswith(".md") and path != allowed_workflow
           ]
 
           if invalid:
@@ -40,5 +37,5 @@ jobs:
                   print(f"  {path}")
               sys.exit(1)
 
-          print("All tracked files are Markdown (workflow exceptions allowed).")
+          print("All tracked files are Markdown (workflow exception allowed).")
           PY

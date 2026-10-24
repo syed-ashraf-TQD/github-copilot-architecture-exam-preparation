@@ -22,11 +22,16 @@ A Markdown-first study repository for preparing for the GitHub Copilot architect
 
 Study materials should be Markdown files with the `.md` extension. Keep source links alongside notes so information can be checked for accuracy and currency.
 
-Pull requests are checked automatically. The Markdown-only check fails if the proposed repository contains a tracked file that does not end in `.md`, except for `.github/workflows/markdown-only.yml` and `.github/workflows/copilot.yml`. The default branch is protected so changes must go through a pull request and required checks must pass before they can be merged.
+Pull requests are checked automatically. The Markdown-only check fails if the proposed repository contains a tracked file that does not end in `.md`, except for `.github/workflows/markdown-only.yml`. The default branch is protected so changes must go through a pull request and required checks must pass before they can be merged.
 
-The Copilot CLI workflow runs a headless review on pull requests and can also be started manually from the Actions tab. It skips pull requests from forks because repository secrets are not available to those runs. To enable it, add a repository secret named `COPILOT_GITHUB_TOKEN` containing a fine-grained personal access token with the **Copilot Requests** permission. The workflow passes it to the CLI as `GH_TOKEN`, which is the documented authentication environment variable. The CLI is denied shell and file-write tools; this check reports a summary but does not automatically validate factual accuracy.
+## Using GitHub Copilot
 
-See the [GitHub Copilot CLI documentation](https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli) for details about programmatic use and authentication.
+- To ask Copilot to work on an issue, assign the issue to **Copilot**. Copilot uses the issue content and comments available when assigned; add later guidance on the pull request it opens.
+- To ask Copilot to update an existing pull request, mention `@copilot` in a regular pull request comment.
+- To request automatic Copilot reviews for new pull requests, create an active branch ruleset targeting the default branch and enable **Automatically request Copilot code review**. See [GitHub's code review setup guide](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review).
+- Copilot availability depends on your Copilot plan and, for organization accounts, administrator policies.
+
+Repository-specific guidance for Copilot is in [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
 
 ## Disclaimer
 
